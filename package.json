@@ -1,0 +1,35 @@
+{
+  "name": "naver-stock-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Naver Stock Research (stock.naver.com/research)",
+  "author": "koreapyj",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "naver-stock-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:http": "node dist/index.js --transport http",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20.18"
+  },
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "express": "^5.3.0",
+    "undici": "^8.12.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
