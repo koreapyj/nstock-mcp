@@ -48,6 +48,19 @@ node dist/index.js --transport http --port 3000 --host 127.0.0.1
 claude mcp add --transport http naver-research http://127.0.0.1:3000/mcp
 ```
 
+### Docker
+
+Images are published to GitHub Packages from `main` without tags, so pull them by digest. The digest of each build is shown in the workflow run summary.
+
+```bash
+docker run --rm -p 3000:3000 \
+  -e MCP_ALLOWED_HOSTS=localhost,127.0.0.1 \
+  -e HTTPS_PROXY=http://proxy.example.com:8080 \
+  ghcr.io/koreapyj/naver-stock-mcp@sha256:<digest>
+```
+
+The image runs the Streamable HTTP transport on `0.0.0.0:3000` by default. Set `MCP_ALLOWED_HOSTS` to the Host headers clients use, to keep DNS rebinding protection.
+
 ## Environment variables
 
 Real environment variables take precedence. A `.env` file in the working directory is also loaded if present (see `.env.example`).
